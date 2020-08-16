@@ -1,0 +1,63 @@
+.body {
+  flex: 0.8;
+  overflow-y: overlay;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+.main_info {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.main_info_img {
+  height: 20vw;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.75);
+}
+
+.main_infoText {
+  flex: 1;
+}
+
+.main_infoText > h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.main_infoText > p {
+  font-size: 14px;
+}
+
+.main_icons_container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.bd_ic_play {
+  font-size: 80px !important;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bd_ic_play:hover {
+  transition: 100ms transform ease-in;
+  transform: scale(1.08);
+}
+
+.main_icons_container > .MuiSvgIcon-root {
+  margin-right: 20px;
+}
+
+.main_songs {
+  margin: 20px -30px;
+  border: 1 solid black;
+}
