@@ -6,7 +6,7 @@ export default function SongRow({ track }) {
     <div className="songRow">
       <img
         className="songRow_img"
-        src={track?.album.images[0].url}
+        src={track?.album?.images?.length > 0 ? track.album.images[0].url : ''}
         alt="track"
       />
       <div className="songRow_info">

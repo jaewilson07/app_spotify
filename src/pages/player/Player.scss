@@ -1,0 +1,18 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: green;
+
+  display: flex;
+  flex-direction: column;
+
+  .player_body {
+    display: flex;
+    flex-grow: 1;
+    height: 80%;
+  }
+
+  .player_footer {
+    height: 15%;
+  }
+}

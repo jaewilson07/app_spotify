@@ -1,8 +1,7 @@
 export const SPOTIFY = () => {
   const CLIENT_ID = '93af4bdd46bb4a1e837c958379fe53da';
-  const CLIENT_SECRET = 'ac6cb460043845ceb94f29e7ae9471ad';
   const AUTH_URL = 'https://accounts.spotify.com/authorize';
-  const REDIRECT_URL = 'http://localhost:3000/';
+  const REDIRECT_URL = 'http://lhttps://ify-df7d1.web.app/';
   const SCOPES = [
     'user-read-currently-playing',
     'user-read-recently-played',
@@ -34,5 +33,5 @@ export const ACTION = {
   SET_USER: 'SET_USER',
   SET_TOKEN: 'SET_TOKEN',
   SET_PLAYLIST: 'SET_PLAYLIST',
-  SET_DISCOVER_WEEKLY: 'SET_DISCOVER_WEEKLY',
+  SET_CURRENTPLAYLIST: 'SET_CURRENTPLAYLIST',
 };

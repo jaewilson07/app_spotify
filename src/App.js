@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Login from './pages/login/Login';
+import Player from './pages/player/Player';
+
+import { getTokenFromUrl } from './components/utilities';
 import SpotifyWebApi from 'spotify-web-api-js';
 
-import Login from './login/login';
-import Player from './player/player';
-import { getTokenFromUrl } from '../components/utilities';
-import { ACTION } from '../constants';
+import { useStateProviderValue } from './state/state-provider';
+import { ACTION } from './constants';
 
-import { useStateProviderValue } from '../state/state-provider';
+import './App.scss';
 
 const spotify = new SpotifyWebApi();
 
@@ -14,6 +18,7 @@ function App() {
   const [{ token }, dispatch] = useStateProviderValue();
 
   useEffect(() => {
+    console.log('triggered app use effect');
     const hash = getTokenFromUrl();
     window.location.hash = '';
 
@@ -39,22 +44,21 @@ function App() {
           playlists,
         });
       });
-
-      // discover weekly
-      spotify.getPlaylist('37i9dQZEVXcNKOau4KpgZW').then((discover_weekly) => {
-        console.log(discover_weekly);
-        dispatch({
-          type: ACTION.SET_DISCOVER_WEEKLY,
-          discover_weekly: discover_weekly,
-        });
-      });
     }
-  });
+  }, [token, dispatch]);
 
   return (
-    <div className="App">
-      {token ? <Player spotify={spotify} /> : <Login />}
-    </div>
+    <Router>
+      <div className="Root">
+        {!token ? (
+          <Login />
+        ) : (
+          <div className="App">
+            <Player spotify={spotify} />
+          </div>
+        )}
+      </div>
+    </Router>
   );
 }
 

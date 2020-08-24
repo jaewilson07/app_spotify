@@ -5,6 +5,7 @@ export const initialState = {
   playlists: [],
   playing: false,
   item: null,
+  currentPlaylist: null,
 
   //REMOVE LATER
   token: null,
@@ -31,11 +32,12 @@ export const reducer = (state, action) => {
         ...state,
         playlists: action.playlists,
       };
-    case ACTION.SET_DISCOVER_WEEKLY:
-      console.log('discover weekly');
+
+    case ACTION.SET_CURRENTPLAYLIST:
+      console.log('setting currentPlaylist');
       return {
         ...state,
-        discover_weekly: action.discover_weekly,
+        currentPlaylist: action.currentPlaylist,
       };
     default:
       return state;

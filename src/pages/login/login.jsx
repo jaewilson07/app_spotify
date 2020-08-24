@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.css';
+import './Login.scss';
 
 import { ReactComponent as Logo } from '../../assets/logo_wide.svg';
 
@@ -12,8 +12,10 @@ function Login() {
 
   return (
     <div className="login">
-      <Logo className="logo" />
-      <a href={spotify_url}>LOGIN WITH SPOTIFY</a>
+      <div className="login_container">
+        <Logo className="logo" />
+        <a href={spotify_url}>LOGIN WITH SPOTIFY</a>
+      </div>
     </div>
   );
 }

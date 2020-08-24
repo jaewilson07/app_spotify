@@ -1,5 +1,5 @@
 import React from 'react';
-import './sidebar.css';
+import './Sidebar.scss';
 
 // icons //
 import { ReactComponent as Logo } from '../../assets/logo.svg';
@@ -10,8 +10,11 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import SidebarOption from './sidebar-option';
 import { useStateProviderValue } from '../../state/state-provider';
+import SidebarBottom from './sidebar-bottom';
 
 export default function Sidebar() {
+  console.log('rendering sidebar');
+
   const [{ playlists }] = useStateProviderValue();
 
   const menu = [
@@ -24,7 +27,7 @@ export default function Sidebar() {
     <div className="sidebar">
       {/* Sidebar Top */}
       <div className="sidebar_top">
-        <Logo className="sidebar_logo" />
+        <Logo className="sidebar_top_logo" />
         {menu.map((option, index) => (
           <SidebarOption key={index} title={option.title} Icon={option.icon} />
         ))}
@@ -33,18 +36,7 @@ export default function Sidebar() {
 
       {/* Sidebar Bottom */}
       <div className="sidebar_bottom">
-        <strong className="sidebar_title">PLAYLISTS</strong>
-        <hr />
-        <div className="sidebar_playlists">
-          {playlists?.items?.map((playlist, index) => {
-            if (playlist.name) {
-              return <SidebarOption key={index} title={playlist.name} />;
-            } else {
-              console.log(playlist);
-              return null;
-            }
-          })}{' '}
-        </div>
+        <SidebarBottom playlists={playlists?.items} />
       </div>
     </div>
   );

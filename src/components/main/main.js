@@ -1,5 +1,5 @@
-import React from 'react';
-import './main.css';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Header from './header/header';
 import SongRow from './song-row/song-row';
@@ -11,9 +11,22 @@ import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
+import './main.css';
+import { ACTION } from '../../constants';
+
 export default function Body({ spotify }) {
-  const [{ discover_weekly }] = useStateProviderValue();
-  console.log(discover_weekly);
+  let { playlistId } = useParams();
+  const [{ currentPlaylist }, dispatch] = useStateProviderValue();
+
+  useEffect(() => {
+    spotify.getPlaylist(playlistId).then((_playlist) => {
+      dispatch({
+        type: ACTION.SET_CURRENTPLAYLIST,
+        currentPlaylist: _playlist,
+      });
+    });
+  }, [playlistId, dispatch, spotify]);
+
   return (
     <div className="body">
       <Header spotify={spotify} />
@@ -23,13 +36,13 @@ export default function Body({ spotify }) {
         <img
           className="main_info_img"
           alt="playlist thumbnail"
-          src={discover_weekly?.images[0].url}
+          src={currentPlaylist?.images[0]?.url}
         />
 
         <div className="main_infoText">
           <strong>PLAYLIST</strong>
-          <h2>{discover_weekly?.name}</h2>
-          <p>{discover_weekly?.description}</p>
+          <h2>{currentPlaylist?.name}</h2>
+          <p>{currentPlaylist?.description}</p>
         </div>
       </div>
 
@@ -41,10 +54,9 @@ export default function Body({ spotify }) {
         </div>
       </div>
 
-      {discover_weekly?.tracks.items.map((item, index) => (
+      {currentPlaylist?.tracks.items.map((item, index) => (
         <SongRow track={item.track} key={index} />
       ))}
-      <SongRow />
     </div>
   );
 }

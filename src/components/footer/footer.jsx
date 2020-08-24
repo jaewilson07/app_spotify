@@ -1,6 +1,6 @@
 import React from 'react';
-import './footer.css';
 
+import { Grid } from '@material-ui/core';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -11,7 +11,7 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 import Slider from '@material-ui/core/Slider';
 
-import { Grid } from '@material-ui/core';
+import './Footer.scss';
 
 export default function Footer() {
   const buttons = [
