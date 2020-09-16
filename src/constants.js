@@ -1,7 +1,7 @@
 export const SPOTIFY = () => {
   const CLIENT_ID = '93af4bdd46bb4a1e837c958379fe53da';
   const AUTH_URL = 'https://accounts.spotify.com/authorize';
-  const REDIRECT_URL = 'http://lhttps://ify-df7d1.web.app/';
+  const REDIRECT_URL = 'https://ify-df7d1.web.app';
   const SCOPES = [
     'user-read-currently-playing',
     'user-read-recently-played',
